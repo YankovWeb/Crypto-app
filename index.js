@@ -3,6 +3,8 @@ const handlebars = require("express-handlebars");
 const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
 
+const routes = require("./routes");
+const {authentication} = require("./middlewares/authenticationMiddleware");
 const app = express();
 app.engine(
   "hbs",
@@ -12,11 +14,11 @@ app.engine(
 );
 
 app.set("view engine", "hbs");
-const routes = require("./routes");
 
 app.use("/static", express.static("public"));
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
+app.use(authentication);
 app.use(routes);
 //data base change the name
 mongoose.set("strictQuery", false);
