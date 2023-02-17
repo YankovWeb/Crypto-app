@@ -24,4 +24,4 @@ app.use(routes);
 mongoose.set("strictQuery", false);
 mongoose.connect("mongodb://127.0.0.1:27017/crypto");
 
-app.listen(5001, () => console.log("server is runnig on port 5000...."));
+app.listen(5001, () => console.log("server is runnig on port 5001...."));
