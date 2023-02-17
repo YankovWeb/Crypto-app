@@ -6,6 +6,7 @@ const {getErrorMessage} = require("../utils/errorUtils");
 router.get("/login", (req, res) => {
   res.render("auth/login");
 });
+
 router.post("/login", async (req, res) => {
   const {email, password} = req.body;
   try {
@@ -39,7 +40,7 @@ router.post("/register", async (req, res) => {
   }
 });
 
-router.get("/logout", isAuth, (res, req) => {
+router.get("/logout", isAuth, (req, res) => {
   res.clearCookie("auth");
   res.redirect("/");
 });
